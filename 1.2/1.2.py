@@ -15,9 +15,9 @@ Activity = list(map(GetCallValue, DataSheet['D'][1:]))
 
 matplotlib.pyplot.plot(Уears, Temperature, linestyle='-', label='Температура')
 matplotlib.pyplot.plot(Уears, RelativeTemperature, linestyle='-.', label='Относительная температура')
-matplotlib.pyplot.plot(Уears, Activity,linestyle='--', label='Активность солнца')
+matplotlib.pyplot.plot(Уears, Activity,linestyle='--', label='Активность Cолнца')
 
 matplotlib.pyplot.xlabel('Время (год)', fontsize=12, color='blue', fontweight='bold', fontstyle='italic')
-matplotlib.pyplot.ylabel('Температура/Активность солнца', fontsize=12, color='green', fontweight='bold', fontstyle='italic')
-matplotlib.pyplot.legend(title='Легенда',loc='upper left')
+matplotlib.pyplot.ylabel('Температура / Активность Cолнца', fontsize=12, color='green', fontweight='bold', fontstyle='italic')
+matplotlib.pyplot.legend(title='Легенда',loc='best')
 matplotlib.pyplot.show()
