@@ -8,22 +8,16 @@ WorkBook=openpyxl.load_workbook('C:\\p4ne\\1.2\\data_analysis_lab.xlsx')#, data_
 
 DataSheet = WorkBook['Data']
 
-years = list(map(GetCallValue, DataSheet['A'][1:]))
-temperature = list(map(GetCallValue, DataSheet['C'][1:]))
-activity = list(map(GetCallValue, DataSheet['D'][1:]))
+Уears = list(map(GetCallValue, DataSheet['A'][1:]))
+Temperature = list(map(GetCallValue, DataSheet['B'][1:]))
+RelativeTemperature = list(map(GetCallValue, DataSheet['C'][1:]))
+Activity = list(map(GetCallValue, DataSheet['D'][1:]))
 
-matplotlib.pyplot.plot(years, temperature, label="Относительная температура")
-matplotlib.pyplot.plot(years, activity, label="Активность солнца")
+matplotlib.pyplot.plot(Уears, Temperature, linestyle='-', label='Температура')
+matplotlib.pyplot.plot(Уears, RelativeTemperature, linestyle='-.', label='Относительная температура')
+matplotlib.pyplot.plot(Уears, Activity,linestyle='--', label='Активность солнца')
 
-matplotlib.pyplot.xlabel('Время')
-matplotlib.pyplot.ylabel('Температура/Активность солнца')
-matplotlib.pyplot.legend(loc='upper left')
-
+matplotlib.pyplot.xlabel('Время (год)', fontsize=12, color='blue', fontweight='bold', fontstyle='italic')
+matplotlib.pyplot.ylabel('Температура/Активность солнца', fontsize=12, color='green', fontweight='bold', fontstyle='italic')
+matplotlib.pyplot.legend(title='Легенда',loc='upper left')
 matplotlib.pyplot.show()
-
-#ColumnA = DataSheet ['A'][1:]
-#ColumnC = DataSheet ['C'][1:]
-#ColumnD = DataSheet ['D'][1:]
-#print(ColumnA)
-#print(ColumnC)
-#print(ColumnD)
