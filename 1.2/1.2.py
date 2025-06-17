@@ -1,7 +1,7 @@
 import matplotlib.pyplot
 import openpyxl
 
-def GetCallValue(cell):# распросить преподавателя, не понял, как это работает, такое впечатление что метод value определен для объекта любого типа. Почему у функции не указан тип парамтера?!
+def GetCallValue(cell):# расспросить преподавателя, не понял, как это работает, такое впечатление что метод value определен для объекта любого типа. Почему у функции не указан тип параметра?!
     return cell.value
 
 WorkBook=openpyxl.load_workbook('C:\\p4ne\\1.2\\data_analysis_lab.xlsx')#, data_only=True) Пока не разобрался, что дает этот параметр!!!
