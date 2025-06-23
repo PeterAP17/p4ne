@@ -1,8 +1,6 @@
 import ipaddress
 import random
-
-#network = ipaddress.IPv4Network('192.168.1.0/24', strict=True)
-#print (network)
+listOfIPv4 = []
 
 class IPv4RandomNetwork (ipaddress.IPv4Network):
    def __init__(self):
@@ -10,10 +8,21 @@ class IPv4RandomNetwork (ipaddress.IPv4Network):
        prefix = random.randint(8, 24)
        ipaddress.IPv4Network.__init__(self,(network, prefix),strict=False)
 
-random_network = IPv4RandomNetwork ()
-print (random_network)
+   def is_regular(self):
+       return self.is_global
 
-    #def regular (self)
-     #   return (True)
-      #  return (False)
+   def key_value(self):
+       return int(self.network_address) + (int(self.netmask) << 32)
+
+def sortfunc(x):
+    return x.key_value()
+
+i = 0
+while i<100:
+    random_network = IPv4RandomNetwork()
+    listOfIPv4.append (random_network)
+    i = i + 1
+
+for n in sorted(listOfIPv4, key=sortfunc):
+    print(n)
 
