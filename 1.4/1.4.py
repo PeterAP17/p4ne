@@ -20,12 +20,10 @@ def simplefunc(x):
     return x.networkAndPrefixToNumber()
 
 i = 0
-while i<5:
+while i<10:
     random_network = IPv4RandomNetwork()
     listOfIPv4.append (random_network)
     i = i + 1
-
-#print (sorted(listOfIPv4, key=simplefunc))
 
 print (listOfIPv4)
 
