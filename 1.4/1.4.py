@@ -5,27 +5,29 @@ listOfIPv4 = []
 class IPv4RandomNetwork (ipaddress.IPv4Network):
    def __init__(self):
        self.network = random.randint(0x0B000000, 0xDF000000)
-       self.prefix = random.randint(8, 24)
+       self.prefix = random.randint(0, 32)
        ipaddress.IPv4Network.__init__(self,(self.network, self.prefix),strict=False)
 
    def is_regular(self):
        return self.is_global
 
-   def networkPrefixToNumber(self):
-       return (int(self.network) + (int(self.prefix) << 32))
+   def networkAndPrefixToNumber(self):
+       netAndPrefToNumber = (int(self.network) + (int(self.prefix) << 32))
+       #print ("|%20s|" % netAndPrefToNumber, "|%20s|" % self, "|%20s|" % self.network_address, "|%20s|" % self.netmask)
+       return (netAndPrefToNumber)
 
 def simplefunc(x):
-    return x.networkPrefixToNumber()
+    return x.networkAndPrefixToNumber()
 
 i = 0
-while i<100:
+while i<5:
     random_network = IPv4RandomNetwork()
     listOfIPv4.append (random_network)
     i = i + 1
 
 #print (sorted(listOfIPv4, key=simplefunc))
 
-for n in sorted(listOfIPv4, key=simplefunc):
-    print(n)
+print (listOfIPv4)
 
-
+for i in sorted(listOfIPv4, key=simplefunc):
+    print ("|%20s|" % i.networkAndPrefixToNumber(), "|%20s|" % i, "|%20s|" % i.network_address, "|%20s|" % i.netmask)
